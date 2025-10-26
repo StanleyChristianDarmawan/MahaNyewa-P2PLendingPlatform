@@ -16,7 +16,7 @@ import {
 } from "@/components/ui/select";
 
 interface AddItemFormProps {
-  categories: any;
+  categories: { id: number; name: string }[];
 }
 
 export function AddItemForm({ categories }: AddItemFormProps) {
