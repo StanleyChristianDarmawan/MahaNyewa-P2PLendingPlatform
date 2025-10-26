@@ -27,7 +27,7 @@ export function HeroSection() {
 
       <div className="hidden lg:block">
         <img
-          src="https://placehold.co/600x400/004AAD/FFFFFF?text=Ilustrasi+Kampus"
+          src="https://placehold.co/600x400/004AAD/FFFFFF?text=MahaNyewa"
           alt="Hero"
           className="rounded-lg shadow-lg"
         />
