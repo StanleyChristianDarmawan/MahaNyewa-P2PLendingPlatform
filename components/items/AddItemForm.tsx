@@ -14,12 +14,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import type { Database } from "@/types/supabase";
-
-type Category = Database['public']['Tables']['categories']['Row'];
 
 interface AddItemFormProps {
-  categories: Category[];
+  categories: any;
 }
 
 export function AddItemForm({ categories }: AddItemFormProps) {

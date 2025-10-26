@@ -1,10 +1,5 @@
 import { createClient } from "@/lib/supabase/server";
 import { ItemCard } from "@/components/items/ItemCard";
-import type { Database } from "@/types/supabase";
-
-type ItemWithCategory = Database['public']['Tables']['items']['Row'] & {
-  categories: { name: string; } | null;
-};
 
 async function getItems() {
   const supabase = await createClient(); 
@@ -19,7 +14,7 @@ async function getItems() {
     console.error("Error fetching items:", error);
     return [];
   }
-  return data as ItemWithCategory[];
+  return data;
 }
 
 export default async function DashboardPage() {

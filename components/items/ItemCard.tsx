@@ -9,16 +9,9 @@ import {
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
-import type { Database } from "@/types/supabase";
-
-type ItemWithCategory = Database['public']['Tables']['items']['Row'] & {
-  categories: {
-    name: string;
-  } | null;
-};
 
 interface ItemCardProps {
-  item: ItemWithCategory;
+  item: any;
 }
 
 export function ItemCard({ item }: ItemCardProps) {
