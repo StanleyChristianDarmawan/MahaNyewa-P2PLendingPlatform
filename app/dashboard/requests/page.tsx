@@ -70,8 +70,16 @@ export default async function MyRequestsPage() {
       ) : (
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
           {requests.map((req) => {
-            const item = req.items;
-            const borrower = req.profiles;
+            const item = (req.items as unknown) as ({ 
+                id: string; 
+                title: string; 
+                image_url: string; 
+            } | null);
+            const borrower = (req.profiles as unknown) as ({ 
+                id: string; 
+                full_name: string; 
+                avatar_url: string; 
+            } | null);
             if (!item || !borrower) return null;
             const profit = req.total_price - req.platform_fee;
 
