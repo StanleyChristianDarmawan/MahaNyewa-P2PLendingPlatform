@@ -7,7 +7,7 @@ export function HeroSection() {
       <div className="text-center lg:text-start space-y-6">
         <main className="text-5xl md:text-6xl font-bold">
           <h1 className="inline">
-            <span className="inline bg-gradient-to-r from-[#004AAD] to-[#007BFF] text-transparent bg-clip-text">
+            <span className="inline bg-gradient-to-r from-[#FDE08A] to-[#EDC254] text-transparent bg-clip-text">
               Pinjam & Pinjamkan
             </span>{" "}
             Barang Antar Mahasiswa
@@ -19,7 +19,7 @@ export function HeroSection() {
         </p>
 
         <div className="space-y-4 md:space-y-0 md:space-x-4">
-          <Button className="w-full md:w-1/3 text-lg" asChild>
+          <Button className="w-full md:w-1/3 text-lg text-white" asChild>
             <Link href="/login">Cari Barang Sekarang</Link>
           </Button>
         </div>
@@ -27,7 +27,7 @@ export function HeroSection() {
 
       <div className="hidden lg:block">
         <img
-          src="https://placehold.co/600x400/004AAD/FFFFFF?text=MahaNyewa"
+          src="https://placehold.co/600x400/EDC254/FFFFFF?text=MahaNyewa"
           alt="Hero"
           className="rounded-lg shadow-lg"
         />

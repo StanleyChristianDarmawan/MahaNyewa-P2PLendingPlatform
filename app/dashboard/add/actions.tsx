@@ -5,7 +5,7 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
 export async function addItemAction(formData: FormData) {
-  const supabase = await createClient(); 
+  const supabase = await createClient();
 
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) {
@@ -16,6 +16,8 @@ export async function addItemAction(formData: FormData) {
   const description = formData.get("description") as string;
   const categoryId = formData.get("category") as string;
   const imageFile = formData.get("image") as File;
+  const pricePerDay = formData.get("price_per_day") as string;
+  const parsedPrice = parseFloat(pricePerDay) || 0;
 
   let imageUrl = null;
 
@@ -46,11 +48,12 @@ export async function addItemAction(formData: FormData) {
     category_id: parseInt(categoryId),
     image_url: imageUrl,
     owner_id: user.id,
+    price_per_day: parsedPrice,
   });
 
   if (insertError) {
     console.error("Insert error:", insertError);
-    throw new Error("Failed to add item");
+    throw new Error("Gagal menambahkan barang. Error DB.");
   }
 
   revalidatePath("/dashboard");

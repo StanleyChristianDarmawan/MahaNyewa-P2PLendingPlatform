@@ -14,6 +14,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { useToast } from "@/components/ui/use-toast"; 
 
 interface AddItemFormProps {
   categories: { id: number; name: string }[];
@@ -23,8 +24,8 @@ export function AddItemForm({ categories }: AddItemFormProps) {
   const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  
   const [imagePreview, setImagePreview] = useState<string | null>(null);
+  const { toast } = useToast();
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -45,7 +46,18 @@ export function AddItemForm({ categories }: AddItemFormProps) {
     setError(null);
 
     const formData = new FormData(event.currentTarget);
-    
+    const price = formData.get("price_per_day");
+
+    if (price && isNaN(Number(price))) {
+      toast({
+        title: "Input Error",
+        description: "Harga per hari harus berupa angka.",
+        variant: "destructive",
+      });
+      setIsSubmitting(false);
+      return;
+    }
+
     try {
       await addItemAction(formData);
     } catch (err) {
@@ -76,6 +88,20 @@ export function AddItemForm({ categories }: AddItemFormProps) {
             ))}
           </SelectContent>
         </Select>
+      </div>
+
+      <div className="space-y-2">
+        <Label htmlFor="price_per_day">Harga Sewa per Hari (Rp)</Label>
+        <Input 
+          id="price_per_day" 
+          name="price_per_day" 
+          type="number" 
+          min="0"
+          step="100"
+          required 
+          placeholder="Cth: 15000" 
+        />
+        <p className="text-xs text-muted-foreground">Isi 0 jika barang ini gratis/sukarela.</p>
       </div>
 
       <div className="space-y-2">

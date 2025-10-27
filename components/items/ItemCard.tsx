@@ -15,7 +15,7 @@ interface ItemCardProps {
 }
 
 export function ItemCard({ item }: ItemCardProps) {
-  const imageUrl = item.image_url || "https://placehold.co/600x400/004AAD/FFFFFF?text=Barang";
+  const imageUrl = item.image_url || "https://placehold.co/600x400/EDC254/2D2D2D?text=Barang";
 
   return (
     <Card className="flex flex-col overflow-hidden">
@@ -27,7 +27,7 @@ export function ItemCard({ item }: ItemCardProps) {
         />
       </CardHeader>
       <CardContent className="flex-1 p-4">
-        {item.categories && (
+        {item.categories?.name && (
           <Badge variant="outline" className="mb-2">
             {item.categories.name}
           </Badge>
@@ -40,8 +40,8 @@ export function ItemCard({ item }: ItemCardProps) {
         </CardDescription>
       </CardContent>
       <CardFooter className="p-4 pt-0">
-        <Button asChild className="w-full">
-          <Link href="#">Lihat Detail</Link> 
+        <Button asChild className="w-full text-white"> 
+          <Link href={`/item/${item.id}`}>Lihat Detail</Link> 
         </Button>
       </CardFooter>
     </Card>

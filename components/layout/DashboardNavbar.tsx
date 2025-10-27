@@ -24,7 +24,8 @@ const getInitials = (name: string | null | undefined) => {
   return (names[0][0] + (names.length > 1 ? names[names.length - 1][0] : '')).toUpperCase();
 };
 
-export async function DashboardNavbar() {
+export async function DashboardNavbar() { 
+  
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
 
@@ -52,7 +53,7 @@ export async function DashboardNavbar() {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center">
-        <nav className="hidden flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
+        <nav className="hidden flex-row gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
           <Link
             href="/dashboard"
             className="flex items-center gap-2 text-lg font-semibold md:text-base"
@@ -61,14 +62,26 @@ export async function DashboardNavbar() {
           </Link>
           <Link
             href="/dashboard"
-            className="text-foreground/70 transition-colors hover:text-foreground"
+            className="text-foreground/70 transition-colors hover:text-foreground whitespace-nowrap"
           >
-            Dashboard
+            Barang Saya
+          </Link>
+          <Link
+            href="/dashboard/borrows"
+            className="text-foreground/70 transition-colors hover:text-foreground whitespace-nowrap"
+          >
+            Pinjaman Saya
+          </Link>
+          <Link
+            href="/dashboard/requests"
+            className="text-foreground/70 transition-colors hover:text-foreground whitespace-nowrap"
+          >
+            Permintaan Masuk
           </Link>
         </nav>
 
         <div className="flex w-full items-center justify-end gap-4">
-          <Button asChild size="sm" className="gap-1">
+          <Button asChild size="sm" className="gap-1 text-white">
             <Link href="/dashboard/add">
               <PlusCircle className="h-4 w-4" />
               Tambah Barang

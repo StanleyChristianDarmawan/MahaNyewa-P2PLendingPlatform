@@ -43,7 +43,7 @@ export function Navbar() {
             <Button variant="ghost" asChild>
               <Link href="/login">Masuk</Link>
             </Button>
-            <Button asChild>
+            <Button className="text-white" asChild>
               <Link href="/register">Daftar</Link>
             </Button>
           </nav>
