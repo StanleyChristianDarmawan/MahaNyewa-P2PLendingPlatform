@@ -1,12 +1,15 @@
 "use client";
 
 import * as React from "react"
+import { type VariantProps } from "class-variance-authority"
+import { toastVariants } from "@/components/ui/toast"
 
 type ToastActionElement = React.ReactElement<
   React.ComponentPropsWithoutRef<"button">
 >
 type ToastDestructive = boolean
 
+type ToastVariant = VariantProps<typeof toastVariants>["variant"]
 interface Toast {
   id: string
   title?: React.ReactNode
@@ -14,6 +17,7 @@ interface Toast {
   action?: ToastActionElement
   destructive?: ToastDestructive
   duration?: number
+  variant?: ToastVariant
 }
 
 interface ToastContextValue {
