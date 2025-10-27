@@ -52,6 +52,8 @@ const getStatusVariant = (status: string) => {
   }
 };
 
+// ... (kode di atas tetap sama)
+
 export default async function MyBorrowsPage() {
   const borrows = await getMyBorrows();
 
@@ -69,7 +71,13 @@ export default async function MyBorrowsPage() {
       ) : (
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
           {borrows.map((borrow) => {
-            const item = borrow.items;
+            
+             const item = (borrow.items as unknown) as ({ 
+                 id: string; 
+                 title: string; 
+                 image_url: string; 
+             } | null);
+             
             if (!item) return null;
 
             const imageUrl = item.image_url || `https://placehold.co/600x400/EDC254/2D2D2D?text=${item.title}`;
