@@ -66,15 +66,7 @@ export function LoginForm() {
               />
             </div>
             <div className="flex flex-col space-y-1.5">
-              <div className="flex justify-between items-baseline">
-                <Label htmlFor="password">Password</Label>
-                <Link
-                  href="/forgot-password"
-                  className="text-sm text-muted-foreground hover:underline"
-                >
-                  Lupa password?
-                </Link>
-              </div>
+              <Label htmlFor="password">Password</Label>
               <Input
                 id="password"
                 type="password"
@@ -82,6 +74,12 @@ export function LoginForm() {
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
+              <Link
+                href="/forgot-password"
+                className="text-sm text-muted-foreground hover:underline self-start"
+              >
+                Lupa password?
+              </Link>
             </div>
             {error && <p className="text-red-500 text-sm">{error}</p>}
             <Button type="submit" className="w-full" disabled={loading}>
